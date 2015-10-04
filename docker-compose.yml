@@ -1,0 +1,14 @@
+db:
+  image: postgres
+  environment:
+    - "POSTGRES_PASSWORD=postgres"
+  volumes:
+    - "db-uuid.sql:/docker-entrypoint-initdb.d/db-uuid.sql"
+
+orocrm:
+  build: .
+  ports:
+    - "80:80"
+    - "81:81"
+  links:
+    - "db:db"
