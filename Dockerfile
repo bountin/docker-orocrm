@@ -13,7 +13,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 # Installing orocrm
 RUN mkdir -p /var/www/orocrm/ && \
-    git clone https://github.com/orocrm/crm-application.git /var/www/orocrm && \
+    git clone --depth 1 https://github.com/orocrm/crm-application.git /var/www/orocrm && \
     ln -s /var/www/orocrm /var/www/orocrm.local
 RUN cd /var/www/orocrm && \
     composer install --no-dev  --prefer-dist
